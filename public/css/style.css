@@ -1,0 +1,22 @@
+.clr{
+	clear: both;
+}
+ul.result_ul{
+	margin: 0px;
+	padding: 0px;
+}
+ul.result_ul li{
+	display: block;
+	padding-bottom: 20px;
+}
+ul.result_ul li img{
+	width: 130px;
+	height: 130px;
+	float: left;
+	margin-right: 20px;
+}
+ul.result_ul li span{
+	font-size: 15px;
+	color: #000000;
+	font-weight: bold;
+}
