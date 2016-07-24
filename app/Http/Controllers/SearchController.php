@@ -19,7 +19,7 @@ class SearchController extends Controller
     function getSearch(){
     	$cities = City::all()->toArray();
     	$type_hobby = TypeHobby::all();
-    	return view('search.getKey', compact('cities', 'type_hobby'));
+    	return view('pages.form_tim_kiem', compact('cities', 'type_hobby'));
     }
 
     function postSearch(){
@@ -40,7 +40,7 @@ class SearchController extends Controller
         ->where('fixed_times.startTime', '<=', $startTime) //+30
         ->where('fixed_times.endTime', '>=', $endTime)     //-30
         ->select('users.fullname', 'users.email','users.intro', 'users.image', 'users.gender', 'user_hobbies.aspiration', 'users.id', 'users.birthday', 'users.job', 'users.city_id', 'users.district_id')->get();
-        return view('search.resultSearch',compact('users'));
+        return view('pages.ket_qua_tim_kiem',compact('users'));
     	
   }
 }

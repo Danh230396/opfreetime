@@ -12,6 +12,6 @@ class FreeTimeController extends Controller
 {
     function showFreeTime($user_id){
     	$fixedTime = User::find($user_id)->fixedTime->toArray();
-    	return view('freeTime.show', compact('fixedTime'));
+    	return view('pages.view_tg_ranh', compact('fixedTime'));
     }
 }

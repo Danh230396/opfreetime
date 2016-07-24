@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('master')
 @section('content')
 <?php $user = Auth::user();?>
 <script type="text/javascript">
@@ -8,22 +8,8 @@
 </script>
 <div class="container">
    <div class="row">
-     <div class="col-md-4">
-            <ul>
-                <img src="{{ asset('resources/upload/images/users/'.$user->image) }}" alt="{{ $user->name }}" width="200px" height="200px">
-                <li>Họ và tên: {{ $user->fullname }} </li>
-                <li>Email: {{ $user->email }} </li>
-                <li>Sinh ngày: {{ $user->birthday }} </li>
-                <?php 
-                    $city = DB::table('cities')->select('name')->where('id' , $user->city_id)->first();
-                    $district = DB::table('districts')->select('name')->where('id' , $user->district_id)->first();
-                ?>
-                <li>Nơi ở: Quận {{ $district->name }}/ {{ $city->name }}</li>
-                <li><a href="{{ route('myFreeTime', Auth::user()->id) }}">Thời gian rảnh</a></li>
-                <li><a href="{{ route('getListUserHobby') }}">Sở thích</a></li>
-            </ul>
-        </div>
-      <div class="col-md-8">
+      @include('blocks.thong_tin_hien_thi')
+      <div class="col-md-6">
          <h2>Thời gian rảnh cố định</h2>
          <button name="submit" type="submit" onclick="$('#addFreeTime').submit();">Lưu</button>
          <hr />
@@ -89,7 +75,7 @@
                          {!! FreeTime::loadEndTime("hEnd[]", "mEnd[]") !!}
                     </td>
                     <td>
-                        {!! FreeTime::loadDay() !!} 
+                        {!! FreeTime::loadDay("day[]") !!} 
                         <input name="date[]" value="" type="hidden">
                         <input name="month[]" value="" type="hidden">
                         <input name="note[]" value="week" type="hidden">
@@ -119,7 +105,7 @@
                     </td>
                     <td>
                         <input name="day[]" value="" type="hidden">
-                        {!! FreeTime::loadDate() !!}
+                        {!! FreeTime::loadDate("date[]") !!}
                         <input name="month[]" value="" type="hidden">
                         <input name="note[]" value="month" type="hidden">
                     </td>
@@ -150,15 +136,18 @@
                     <td>
                         <input name="day[]" value="" type="hidden">
                         <input name="note[]" value="year" type="hidden">
-                        {!! FreeTime::loadDate() !!}
+                        {!! FreeTime::loadDate("date[]") !!}
                     </td>
                     <td>
-                        {!! FreeTime::loadMonth() !!}
+                        {!! FreeTime::loadMonth("month[]") !!}
                     </td>
                   </tr>
                 </tbody>
                 </table>
          </form>
+      </div>
+      <div class="col-md-3">
+        @include('blocks.calendar')
       </div>
    </div>
 </div>

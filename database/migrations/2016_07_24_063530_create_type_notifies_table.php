@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAddColumnTable extends Migration
+class CreateTypeNotifiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class CreateAddColumnTable extends Migration
      */
     public function up()
     {
-        Schema::table('user', function (Blueprint $table) {
+        Schema::create('type_notifies', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 255);
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ class CreateAddColumnTable extends Migration
      */
     public function down()
     {
-        Schema::drop('addColumn');
+        Schema::drop('type_notifies');
     }
 }

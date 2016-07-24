@@ -20,7 +20,7 @@ class UserHobbyController extends Controller
 
     function getAdd(){
     	$type_hobby = TypeHobby::all();
-    	return view("hobby.formAdd", compact('type_hobby'));
+    	return view("pages.them_so_thich", compact('type_hobby'));
     }
 
     function postAdd(Request $request){
@@ -44,7 +44,7 @@ class UserHobbyController extends Controller
     	// 	$types = Hobby::where('id', $value->hobby_id)->get();
     	// 	$hobbies->type_hobby_id = $types->type_hobby_id;
     	// }
-    	return view('hobby.show', compact('hobbies'));
+    	return view('pages.view_so_thich', compact('hobbies'));
     }
 
     

@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/ban-be', 'UserController@listFriend');
 
 #---------------------------------------------------------------
 Route::group(['prefix' => 'user'], function () {
@@ -28,9 +27,16 @@ Route::group(['prefix' => 'user'], function () {
 	Route::get('testLogin',['as'=>'testLogin', 'uses' => 'TestController@index']);
 
 
-	Route::get('update/getInformation/{id}', ['as' => 'updateGetInformation' , 'uses' => 'Auth\AuthController@getUpdateInfor']);
-	Route::post('update/postInformation/{id}', ['as' => 'updatePostInformation' , 'uses' => 'Auth\AuthController@postUpdateInfor']);
+	Route::get('update/getInformation/{id}', ['as' => 'updateGetInformation' , 'uses' => 'UserController@getUpdateInfor']);
+	Route::post('update/postInformation/{id}', ['as' => 'updatePostInformation' , 'uses' => 'UserController@postUpdateInfor']);
 	//Route::get('update/information', ['as' => 'updateInformation' , 'uses' => 'UserController@getUpdate']);
+
+	#cac  route view ho so nguoi dung
+	Route::get('view/{id}', ['as' => 'viewUserProfile', 'uses' => 'UserController@viewUserProfile']);
+	#xu ly add Friend
+	Route::get('addFriend/{id}', ['as' => 'requestAddFriend', 'uses' => 'UserController@addFriend']);
+	#Confirm friend
+	Route::get('confirmFriend/{id}', ['as' => 'confirmFriend', 'uses' => 'UserController@confirmFriend']);
 });
 
 #cac route cho hobby
@@ -52,6 +58,12 @@ Route::group(['prefix' => 'freeTime'], function(){
 		Route::get('getAdd', ['as' => 'getAddFixed', 'uses' => 'FixedTimeController@getAdd']);
 		#Xu ly du lieu get duoc tu form, route nay co mot tham so truyen vao do la user_id
 		Route::post('postAdd/{id}', ['as' => 'postAddFixed', 'uses' => 'FixedTimeController@postAdd']);
+		#xuat ra form de cap nhat cac so thich vao trong
+		Route::get('getEdit/{id}', ['as' => 'getEditFixed', 'uses' => 'FixedTimeController@getEdit']);
+		#Xu ly du lieu get duoc tu form, route nay co mot tham so truyen vao do la id cua thoi gian ranh
+		Route::post('postEdit/{id}', ['as' => 'postEditFixed', 'uses' => 'FixedTimeController@postEdit']);
+		#ham xoa time ranh
+		route::get('delete/{id}', ['as' => 'deleteFixed', 'uses' => 'FixedTimeController@delete']);
 	});
 	#Route nay show ra thoi gian ranh cua nguoi dung
 	Route::get('myFreeTime/{user_id}', ['as' => 'myFreeTime', 'uses' => 'FreeTimeController@showFreeTime']);

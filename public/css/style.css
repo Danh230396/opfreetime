@@ -20,3 +20,13 @@ ul.result_ul li span{
 	color: #000000;
 	font-weight: bold;
 }
+/*-----------------------------------------------------------Style cho cac dong thong bao */
+ul.notify_class li{
+	display: block;
+}
+ul.notify_class li img{
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 20px;
+}

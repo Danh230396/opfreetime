@@ -38,9 +38,9 @@ class FreeTime{
         return $x;
 	}
     #Hàm load day
-	public static function loadDate(){
+	public static function loadDate($date){
 
-		$x = '<select name="date[]">';
+		$x = '<select name="'.$date.'">';
         $x .= '<option value=""></option>';
             for($i = 1; $i <= 31; $i++){
                 $x .= '<option value="'. $i .'">Ngày '. $i .'</option>';
@@ -50,8 +50,8 @@ class FreeTime{
 	}
 
     #Hàm load month
-	public static function loadMonth(){
-		$x = '<select name="month[]">';
+	public static function loadMonth($month){
+		$x = '<select name="'.$month.'">';
         $x .= '<option value=""></option>';
             for($i = 1; $i <= 12; $i++){
                 $x .= '<option value="'. $i .'">Tháng '. $i .'</option>';
@@ -61,8 +61,8 @@ class FreeTime{
 	}
 
     #Ham load thứ trong tuần
-	public static function loadDay(){
-		$x = '<select name="day[]">';
+	public static function loadDay($day){
+		$x = '<select name="'.$day.'">';
         $x .= '<option value=""></option>';
         for($i = 1; $i <= 7; $i++){
         	if($i != 1){

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('master')
 @section('content')
 <?php $user = Auth::user();?>
 <script type="text/javascript">
@@ -35,6 +35,7 @@
               <th>Ngày</th>
               <th>Tháng</th>
               <th>Ghi chú</th>
+              <th>Xóa - Sửa</th>
             </tr>
           </thead>
           <tbody>
@@ -68,6 +69,7 @@
               <td>@if($item['date'] != 0)Ngày {!! $item['date'] !!} @endif</td>
               <td>@if($item['month'] != 0)Tháng {!! $item['month'] !!} @endif</td>
               <td>{{ replace($item['note']) }}</td>
+              <td><a href="{{ route('deleteFixed', $item['id']) }}">Xóa</a>  <a href="{{ route('getEditFixed', $item['id']) }}">Sửa</a></td>
             </tr>
             @endforeach
           </tbody>

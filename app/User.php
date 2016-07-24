@@ -28,4 +28,7 @@ class User extends Authenticatable
     public function fixedTime(){
         return $this->hasMany('App\FixedTime');
     }
+    function friends(){
+        return $this->hasMany('App\Friend');
+    }
 }
