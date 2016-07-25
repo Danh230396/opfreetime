@@ -8,20 +8,7 @@
 </script>
 <div class="container">
    <div class="row">
-      <div class="col-md-3">
-            <ul>
-                <li><img src="{{ asset('resources/upload/images/users/'.$user->image) }}" alt="{{ $user->name }}" width="200px" height="200px"></li>
-                <li>Họ và tên: {{ $user->fullname }} </li>
-                <li>Email: {{ $user->email }} </li>
-                <li>Sinh ngày: {{ $user->birthday }} </li>
-                <?php 
-                    $city = DB::table('cities')->select('name')->where('id' , $user->city_id)->first();
-                    $district = DB::table('districts')->select('name')->where('id' , $user->district_id)->first();
-                ?>
-                <li>Nơi ở: Quận {{ $district->name }}/ {{ $city->name }}</li>
-                <li><a href="{{ route('myFreeTime', Auth::user()->id) }}">Thời gian rảnh</a></li>
-            </ul>
-        </div>
+      @include('blocks.thong_tin_hien_thi')
       <div class="col-md-8">
          <h2>Thong tin nguoi dung</h2>
          <hr />

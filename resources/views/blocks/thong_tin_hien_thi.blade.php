@@ -11,5 +11,6 @@
                 <li>Nơi ở: Quận {{ $district->name }}/ {{ $city->name }}</li>
                 <li><a href="{{ route('myFreeTime', Auth::user()->id) }}">Thời gian rảnh</a></li>
                 <li><a href="{{ route('getListUserHobby') }}">Sở thích</a></li>
+                <li><a href="{{ route('tao-event') }}">Tạo sự kiện</a></li>
             </ul>
         </div>

@@ -96,3 +96,11 @@ Route::group(['prefix' => 'typeHobby'], function(){
 Route::get('getSearch', ['as' => 'getSearch', 'uses' => 'SearchController@getSearch']);
 Route::post('postSearch', ['as' => 'postSearch', 'uses' => 'SearchController@postSearch']);
 Route::get('resultSearch', ['as' => 'resultSearch', 'uses' => 'SearchController@resultSearch']);
+
+#cac route cho viec thao tac voi blog
+Route::group(['prefix' => 'event'], function(){
+	Route::get('tao-event', ['as' => 'tao-event', 'uses' => 'EventController@getAdd']);
+	Route::post('xl-event', ['as' => 'xl-event', 'uses' => 'EventController@postAdd']);
+	Route::get('su-kien-cua-toi', ['as' => 'my-events', 'uses' => 'EventController@myEvents']);
+});
+
