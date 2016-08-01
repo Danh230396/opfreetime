@@ -1,6 +1,17 @@
 .clr{
 	clear: both;
 }
+ul{
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+/*---------------------------------------------------------Phan thong tin cua nguoi dung duoc hien thi ben goc trai */
+
+
+
+/*------------------------------------------------------*/
 ul.result_ul{
 	margin: 0px;
 	padding: 0px;
@@ -29,4 +40,89 @@ ul.notify_class li img{
 	width: 100px;
 	height: 100px;
 	margin-right: 20px;
+}
+
+
+/* ----------------------------------------------------------Style cho danh sach ban be, nay ở góc bên phải */
+#box_friend{
+	
+	width: 100%;
+	border: 1px solid #666666;
+	
+}
+#box_friend .box{
+	overflow:auto;
+	height: 400px;
+}
+#box_friend h4{
+	font-weight: bold;
+	text-align: center;
+}
+#box_friend hr{
+	border-color: #666666;
+}
+#box_friend ul{
+	padding: 0px;
+	margin: 10px 10px;
+}
+#box_friend ul li{
+	list-style: none;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+#box_friend ul li img{
+	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+}
+
+/*----------------------------------------------------------Cai hop de nguoi dung chat voi nhua -----------*/
+.chat_content{
+	border: 1px solid #666666;
+	width: 100%;
+}
+.chat_content hr{
+	border-color: #666666;
+}
+.chat_content h4{
+	padding-left: 15px;
+	font-weight: bold;
+}
+.chat_content .chat_box{
+	height: 400px;
+	overflow: auto;
+}
+.chat_content .chat_box ul li{
+	margin-bottom: 20px;
+	padding-left: 15px;
+}
+.chat_content .chat_box ul li div.hinh{
+	float: left;
+	margin-right: 10px;
+}
+.chat_content .chat_box ul li div.noi_dung{
+	width: 370px;
+	float: left;
+}
+
+.chat_content .chat_box ul li div.hinh img{
+	width: 40px;
+	height: 40px;
+}
+.main_chat div.compose{
+	background-color: #e7e8e8;
+	padding: 15px 20px;
+}
+.main_chat div.compose textarea{
+	width: 85%;
+	float: left;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	height: 70px;
+}
+.main_chat div.compose button{
+	width: 15%;
+	height: 70px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
 }

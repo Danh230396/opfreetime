@@ -35,20 +35,20 @@ $(document).ready(function(){
 		  });
 
 
-var id = $( ".sle_city" ).val();
-    $.ajax({
-        url: "/opfreetime/districtOfCity/" + id,
-        type: 'get',
-        dataType: 'json',
-        success: function (output) {
-          var option = '';
-          $.each(output,function(key, item){
-             option += '<option value="' + item['id'] + '">' + item['name'] + '</option>';
-          });
-          $('.sle_district').html(option);
-        },
+		var id = $( ".sle_city" ).val();
+		    $.ajax({
+		        url: "/opfreetime/districtOfCity/" + id,
+		        type: 'get',
+		        dataType: 'json',
+		        success: function (output) {
+		          var option = '';
+		          $.each(output,function(key, item){
+		             option += '<option value="' + item['id'] + '">' + item['name'] + '</option>';
+		          });
+		          $('.sle_district').html(option);
+		        },
 
-    });
+		    });
                         
 
 
@@ -68,6 +68,86 @@ var id = $( ".sle_city" ).val();
               },
            });
         });
+
+        //Ham ajax này sẽ trả về danh sách bạn bè, và sẽ được hiển thị bên góc phải của trang chủ
+        $.ajax({
+            url: '/opfreetime/danhsachbanbe',
+            type: 'GET',
+            dataType: 'json',
+            success: function(result){
+                var html = '<div class="box"><ul>';
+                $.each(result, function(key, item){
+                    html += '<li class="li_friend"><img src="/opfreetime/resources/upload/images/users/' + item.image + '"><span id="span_username">' + item.fullname + '</span><input type="hidden" name="friend_id" value="' + item.id + '"></li>';
+                });
+                html += '</ul></div>'; 
+                $("#box_friend").append(html);
+                
+            }
+        });
+
+        
+
+        	// var friend_id = $(this).find('input[name="friend_id"]').val();
+        	// console.log(friend_id);
+
+        //Ham xu ly gui tin nhan khi click vao button
+        $("#sendMsg").click(function(){
+               var user_id = $('form[name="form_chat"]').find('input[name="user_id"]').val();
+               var token = $('form[name="form_chat"]').find('input[name="_token"]').val();
+               var msg = $('form[name="form_chat"]').find('textarea[name="msg"]').val();
+               $.ajax({
+                    url: '/opfreetime/massage/send-massage',
+                    type: 'POST',
+                    headers: {'X-CSRF-TOKEN': token},
+                    cache: false,
+                    data: {
+                        "_token": token,
+                        "user_id": user_id,
+                        "msg": msg
+                    },
+                    
+               });
+               $('form[name="form_chat"]').find('textarea[name="msg"]').val("");
+            });
+
+        //Ham load masages le chat box
+        
+        setInterval(function(){
+        	var chat_user_id = $('input[name="chat_user_id"]').val();
+         $.ajax({
+            url: '/opfreetime/massage/load-massage/' + chat_user_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(result){
+
+                var html = '<ul>';
+                $.each(result, function(key, item){
+                    html += '<li onclick="testClick()">';
+                    html += '<div class="hinh">';
+                    html += '<img src="/opfreetime/resources/upload/images/users/' + item.image1 + '">';
+                    html += '</div>';
+                    html += '<div class="noi_dung">';
+                    html += '<a href="#">' + item.fullname1 + '</a><br />';
+                    html += '<span>' + item.msg + '</span>';
+                    html += '</div>';
+                    html += '<div class="clr"></div>';
+                    html += '</li>';
+                });
+                html += '</ul>';
+                $("#chat_box").html(html); 
+                $(".li_friend").on('click',function(){
+                	var friend_id = $(this).find('input[name="friend_id"]').val();
+                	var friend_fullname = $(this).find( "#span_username" ).html();
+		        	$('input[name="chat_user_id"]').val(friend_id);
+		        	$('form[name="form_chat"]').find('input[name="user_id"]').val(friend_id);
+		        	$('#user_fullname').html(friend_fullname);
+		        });
+                
+            }
+        }); }, 1000);
+		
+
+
 		//Cái này có thể dùng first last, nhưng vấn để là làm s trả về được giá trị số
 		// Nên hiện tại thì làm một cái thôi, thích thì thêm nữa chứ biết răng chừ
 	// $(".moreHobby").click(function(){
@@ -90,5 +170,11 @@ var id = $( ".sle_city" ).val();
 	// 	$(html).insertAfter('.aspiration'+len);
 	// 	console.log(1);
 	// });
+
+
+var friend_id = 8; 
+        $(".li_friend").on('click',function(){
+        	alert('Da click');
+        });
 });
             

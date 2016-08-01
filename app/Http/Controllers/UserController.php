@@ -119,4 +119,17 @@ class UserController extends Controller
         $user->save();
         return redirect()->action('HomeController@index');
     }
+    #ham getFriend se lay tat các bạn bè trong danh sách của người dùng và trả về một json để thực hiện ajax
+    function getFriend(){
+        $user_id = Auth::user()->id;
+        $friends = Friend::where('user_id1', '=', $user_id)
+                        ->where('status', '=', 1)->get()->toArray();
+        $listFriend = array();
+        foreach ($friends as  $value) {
+            $listFriend[] = User::select('id', 'fullname', 'image')->where('id', '=', $value['user_id2'])->first();
+        }
+        return json_encode($listFriend);
+
+    }
+
 }

@@ -8,7 +8,7 @@
                     $city = DB::table('cities')->select('name')->where('id' , $user->city_id)->first();
                     $district = DB::table('districts')->select('name')->where('id' , $user->district_id)->first();
                 ?>
-                <li>Nơi ở: Quận {{ $district->name }}/ {{ $city->name }}</li>
+                <li>Nơi ở: Quận {{ isset($district->name) ? $district->name : null}}/ {{ isset($city->name) ? $city->name : null }}</li>
                 <li><a href="{{ route('myFreeTime', Auth::user()->id) }}">Thời gian rảnh</a></li>
                 <li><a href="{{ route('getListUserHobby') }}">Sở thích</a></li>
                 <li><a href="{{ route('tao-event') }}">Tạo sự kiện</a></li>

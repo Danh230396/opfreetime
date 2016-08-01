@@ -17,6 +17,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/ban-be', 'UserController@listFriend');
+Route::get('/danhsachbanbe', 'UserController@getFriend');
 
 #---------------------------------------------------------------
 Route::group(['prefix' => 'user'], function () {
@@ -103,4 +104,10 @@ Route::group(['prefix' => 'event'], function(){
 	Route::post('xl-event', ['as' => 'xl-event', 'uses' => 'EventController@postAdd']);
 	Route::get('su-kien-cua-toi', ['as' => 'my-events', 'uses' => 'EventController@myEvents']);
 });
+Route::group(['prefix' => 'massage'], function(){
+	Route::get('chat-box', ['as' => 'chat-box', 'uses' => 'MassageController@chatRoom']);
+	Route::post('send-massage', ['as' => 'sendMassage', 'uses' => 'MassageController@sendMassage']);
+	Route::get('load-massage/{user_id}', ['as' => 'loadMassage','uses' => 'MassageController@loadMassage']);
+});
+
 

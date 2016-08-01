@@ -33,6 +33,8 @@ class AuthController extends Controller
         $user->city_id = 1;
         $user->district_id = 1;
         $user->save();
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+        return redirect('/');
     }
 
     function getLogin(){
