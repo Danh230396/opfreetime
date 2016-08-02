@@ -76,6 +76,21 @@ ul.notify_class li img{
 	height: 50px;
 }
 
+#box_friend .box::-webkit-scrollbar {
+    width: 9px;
+}
+#box_friend .box::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+#box_friend .box::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+#box_friend .box::-webkit-scrollbar-thumb:hover {
+	background-color: #aaa;
+}
+
+
 /*----------------------------------------------------------Cai hop de nguoi dung chat voi nhua -----------*/
 .chat_content{
 	border: 1px solid #666666;
@@ -125,4 +140,50 @@ ul.notify_class li img{
 	height: 70px;
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 0px;
+}
+
+.chat_box::-webkit-scrollbar {
+    width: 9px;
+}
+.chat_box::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+.chat_box::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+.chat_box::-webkit-scrollbar-thumb:hover {
+	background-color: #aaa;
+}
+
+/*-----------------------------------------------------Trang login ---------------*/
+#login_page{
+}
+#login_page .welcome_opfreetime .solugan{
+	font-size: 12px;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 14px;
+}
+#login_page .welcome_opfreetime .solugan span{
+	color: #399afd;
+}
+#login_page .welcome_opfreetime{
+	text-align: center;
+}
+#login_page .welcome_opfreetime img{
+	width: 200px;
+}
+
+#login_page .form_login .form-control{
+	border-radius: 0px;
+}
+#login_page .form_login .form-control:focus{
+	box-shadow: none;
+}
+#login_page .form_login .button_login{
+	text-align: center;
+}
+#login_page .form_login .checkbox{
+	text-align: center;
 }

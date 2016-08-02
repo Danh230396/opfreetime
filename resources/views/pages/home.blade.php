@@ -1,5 +1,4 @@
 @extends('master')
-
 @section('content')
 <?php $user = Auth::user();?>
 <div class="container">

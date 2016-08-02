@@ -1,5 +1,4 @@
 @extends('master')
-
 @section('content')
 <?php $user = Auth::user();?>
 <div class="container">
@@ -10,6 +9,7 @@
                 <h4 id="user_fullname">TỪ PHƯƠNG DANH</h4>
                 <hr />
                 <input type="hidden" name="chat_user_id" value="7">
+                <input type="hidden" name="ten_trang" value="chat">
                 <div class="chat_box" id="chat_box">
                     
                     <!-- tin nhan se duoc load len bang ajax -->
@@ -24,10 +24,6 @@
                     <button type="button" id="sendMsg" class="btn btn-info">Gửi</button>
                 </div>
             </form>
-
-            <script type="text/javascript" charset="utf-8" async defer>
-            
-            </script>
         </div>
         <div class="col-md-3">
             <div id="box_friend">

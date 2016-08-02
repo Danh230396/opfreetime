@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <?php $user = Auth::user();?>
 <div class="container">

@@ -111,9 +111,10 @@ $(document).ready(function(){
             });
 
         //Ham load masages le chat box
-        
-        setInterval(function(){
-        	var chat_user_id = $('input[name="chat_user_id"]').val();
+        var ten_trang = $('input[name="ten_trang"]').val();
+        if(ten_trang == 'chat'){
+          setInterval(function(){
+          var chat_user_id = $('input[name="chat_user_id"]').val();
          $.ajax({
             url: '/opfreetime/massage/load-massage/' + chat_user_id,
             type: 'GET',
@@ -136,16 +137,20 @@ $(document).ready(function(){
                 html += '</ul>';
                 $("#chat_box").html(html); 
                 $(".li_friend").on('click',function(){
-                	var friend_id = $(this).find('input[name="friend_id"]').val();
-                	var friend_fullname = $(this).find( "#span_username" ).html();
-		        	$('input[name="chat_user_id"]').val(friend_id);
-		        	$('form[name="form_chat"]').find('input[name="user_id"]').val(friend_id);
-		        	$('#user_fullname').html(friend_fullname);
-		        });
+                  var friend_id = $(this).find('input[name="friend_id"]').val();
+                  var friend_fullname = $(this).find( "#span_username" ).html();
+                  $('input[name="chat_user_id"]').val(friend_id);
+                  $('form[name="form_chat"]').find('input[name="user_id"]').val(friend_id);
+                  $('#user_fullname').html(friend_fullname);
+                });
                 
             }
         }); }, 1000);
-		
+        }
+
+        
+
+       
 
 
 		//Cái này có thể dùng first last, nhưng vấn để là làm s trả về được giá trị số
