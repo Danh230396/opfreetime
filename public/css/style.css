@@ -18,6 +18,7 @@ body {
   font-family: OpenSans-Regular !important;
   color: #252525;
   background-color: #FAFAFA;
+  padding-bottom: 20px;
 }
 .clr{
 	clear: both;
@@ -76,52 +77,6 @@ ul.notify_class li img{
 }
 
 
-/* ----------------------------------------------------------Style cho danh sach ban be, nay ở góc bên phải */
-#box_friend{
-	
-	width: 100%;
-	border: 1px solid #666666;
-	
-}
-#box_friend .box{
-	overflow:auto;
-	height: 400px;
-}
-#box_friend h4{
-	font-weight: bold;
-	text-align: center;
-}
-#box_friend hr{
-	border-color: #666666;
-}
-#box_friend ul{
-	padding: 0px;
-	margin: 10px 10px;
-}
-#box_friend ul li{
-	list-style: none;
-	margin-bottom: 10px;
-	cursor: pointer;
-}
-#box_friend ul li img{
-	margin-right: 10px;
-	width: 50px;
-	height: 50px;
-}
-
-#box_friend .box::-webkit-scrollbar {
-    width: 9px;
-}
-#box_friend .box::-webkit-scrollbar-track {
-    background-color: #eaeaea;
-    border-left: 1px solid #ccc;
-}
-#box_friend .box::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-}
-#box_friend .box::-webkit-scrollbar-thumb:hover {
-	background-color: #aaa;
-}
 
 
 /*----------------------------------------------------------Cai hop de nguoi dung chat voi nhua -----------*/
@@ -335,4 +290,52 @@ ul.notify_class li img{
 	float: left;
 	font-size: 13px;
 }
+/*----------------------------------------------------box friend ----------------*/
 
+/* ----------------------------------------------------------Style cho danh sach ban be, nay ở góc bên phải */
+#box_friend{
+	
+	width: 100%;
+	border: 1px solid #DAD9D9; 
+	background-color: #ffffff;
+	border-radius: 2px;
+	
+}
+#box_friend .box{
+	overflow:auto;
+	height: 400px;
+}
+#box_friend h4{
+	text-align: center;
+}
+#box_friend hr{
+	border-color: #DAD9D9; 
+}
+#box_friend ul{
+	padding: 0px;
+	margin: 10px 10px;
+}
+#box_friend ul li{
+	list-style: none;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+#box_friend ul li img{
+	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+}
+
+#box_friend .box::-webkit-scrollbar {
+    width: 9px;
+}
+#box_friend .box::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+#box_friend .box::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+#box_friend .box::-webkit-scrollbar-thumb:hover {
+	background-color: #aaa;
+}
