@@ -17,6 +17,7 @@
     <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/png" sizes="16x16">
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ url('public/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('public/fontawesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('public/css/style.css') }}">
     <script src="{{ url('public/js/jquery.min.js') }}"></script>
     <script src="{{ url('public/js/bootstrap.min.js') }}"></script>
@@ -36,7 +37,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top menu_wrapper">
         <div class="container">
             <div class="navbar-header">
 
@@ -67,13 +68,13 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Thiết lập<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ route('updateGetInformation', Auth::user()->id) }}">Thong tin</a></li>
+                                <li><a href="{{ route('updateGetInformation', Auth::user()->id) }}">Thông tin</a></li>
                                 <li><a href="{{ route('getAddFixed') }}">Thời gian rảnh</a></li>
                                 <li><a href="{{ route('getAddUserHobby') }}">Sở thích</a></li>
                             </ul>
                         </li>
                        <li><a href="{{ route('getSearch') }}">Tìm kiếm</a></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Đăng xuất</a></li>
+                        <li><a href="{{ url('/logout') }}">Đăng xuất</a></li>
 
                     @endif
                 </ul>
@@ -88,3 +89,4 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>
+

@@ -17,7 +17,7 @@
             <div class="form-group">
                <label class="control-label col-sm-2">Hinh dai dien:</label>
                <div class="col-sm-10">
-                  <img src="{{ asset('resources/upload/images/users/'.$user->image) }}" alt="{{ $user->name }}" width="200px" height="200px">
+                  <img src="{{ $user->image == '' ? asset('images/temp_avatar.jpg') : asset('resources/upload/images/users/'.$user->image) }}" alt="{{ $user->fullname }}" width="200px" height="200px">
                   <input type="hidden" class="form-control" name="image_current" value="{{ old($user->image, isset($user->image) ? $user->image : null) }}">
                   <input type="file" class="form-control" name="image">
                </div>

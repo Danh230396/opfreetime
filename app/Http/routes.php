@@ -12,12 +12,11 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/testHome', function(){ return view('pages.testHome'); });
 
 Route::auth();
-
-Route::get('/home', 'HomeController@index');
-Route::get('/ban-be', 'UserController@listFriend');
-Route::get('/danhsachbanbe', 'UserController@getFriend');
+Route::get('/ban-be', 'UserController@listFriend')->middleware('auth');
+Route::get('/danhsachbanbe', 'UserController@getFriend')->middleware('auth');
 
 #---------------------------------------------------------------
 Route::group(['prefix' => 'user'], function () {
@@ -28,20 +27,20 @@ Route::group(['prefix' => 'user'], function () {
 	Route::get('testLogin',['as'=>'testLogin', 'uses' => 'TestController@index']);
 
 
-	Route::get('update/getInformation/{id}', ['as' => 'updateGetInformation' , 'uses' => 'UserController@getUpdateInfor']);
-	Route::post('update/postInformation/{id}', ['as' => 'updatePostInformation' , 'uses' => 'UserController@postUpdateInfor']);
+	Route::get('update/getInformation/{id}', ['as' => 'updateGetInformation' , 'uses' => 'UserController@getUpdateInfor'])->middleware('auth');
+	Route::post('update/postInformation/{id}', ['as' => 'updatePostInformation' , 'uses' => 'UserController@postUpdateInfor'])->middleware('auth');;
 	//Route::get('update/information', ['as' => 'updateInformation' , 'uses' => 'UserController@getUpdate']);
 
 	#cac  route view ho so nguoi dung
-	Route::get('view/{id}', ['as' => 'viewUserProfile', 'uses' => 'UserController@viewUserProfile']);
+	Route::get('view/{id}', ['as' => 'viewUserProfile', 'uses' => 'UserController@viewUserProfile'])->middleware('auth');
 	#xu ly add Friend
-	Route::get('addFriend/{id}', ['as' => 'requestAddFriend', 'uses' => 'UserController@addFriend']);
+	Route::get('addFriend/{id}', ['as' => 'requestAddFriend', 'uses' => 'UserController@addFriend'])->middleware('auth');
 	#Confirm friend
-	Route::get('confirmFriend/{id}', ['as' => 'confirmFriend', 'uses' => 'UserController@confirmFriend']);
+	Route::get('confirmFriend/{id}', ['as' => 'confirmFriend', 'uses' => 'UserController@confirmFriend'])->middleware('auth');
 });
 
 #cac route cho hobby
-Route::group(['prefix' => 'hobby'], function(){
+Route::group(['prefix' => 'hobby', 'middleware' => 'auth'], function(){
 	Route::group(['prefix' => 'fixed'], function(){
 		#xuat ra form de add cac so thich vao trong
 		Route::get('getAdd', ['as' => 'getAddFixedHobby', 'uses' => 'HobbyController@getAdd']);
@@ -52,7 +51,7 @@ Route::group(['prefix' => 'hobby'], function(){
 
 
 #cac route cho freeTime
-Route::group(['prefix' => 'freeTime'], function(){
+Route::group(['prefix' => 'freeTime', 'middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'fixed'], function(){
 		#xuat ra form de add cac so thich vao trong
@@ -78,36 +77,37 @@ Route::get('districtOfCity/{id}', ['as' => 'districtOfCity', 'uses' => 'CityCont
 
 
 #cac route cho User Hoppy
-Route::group(['prefix' => 'userhobby'], function(){
+Route::group(['prefix' => 'userhobby', 'middleware' => 'auth'], function(){
 	Route::get('getAdd', ['as' => 'getAddUserHobby', 'uses' => 'UserHobbyController@getAdd']);
 	Route::post('postAdd', ['as' => 'postAddUserHobby', 'uses' => 'UserHobbyController@postAdd']);
 	Route::get('getList', ['as' => 'getListUserHobby', 'uses' => 'UserHobbyController@getList']);
 });
 
 #cac route cho User Hoppy
-Route::group(['prefix' => 'hobby'], function(){
+Route::group(['prefix' => 'hobby', 'middleware' => 'auth'], function(){
 	Route::get('getAdd', ['as' => 'getAddHobby', 'uses' => 'HobbyController@getAdd']);
 });
 
-Route::group(['prefix' => 'typeHobby'], function(){
+Route::group(['prefix' => 'typeHobby', 'middleware' => 'auth'], function(){
 	Route::get('getHobbies/{id}', ['as'=>'getHobbiesOfType','uses' => 'TypeHobbyController@getHobby']);
 });
 
 #cac route cho tim kiem
-Route::get('getSearch', ['as' => 'getSearch', 'uses' => 'SearchController@getSearch']);
-Route::post('postSearch', ['as' => 'postSearch', 'uses' => 'SearchController@postSearch']);
-Route::get('resultSearch', ['as' => 'resultSearch', 'uses' => 'SearchController@resultSearch']);
+Route::get('getSearch', ['as' => 'getSearch', 'uses' => 'SearchController@getSearch'])->middleware('auth');
+Route::post('postSearch', ['as' => 'postSearch', 'uses' => 'SearchController@postSearch'])->middleware('auth');
+Route::get('resultSearch', ['as' => 'resultSearch', 'uses' => 'SearchController@resultSearch'])->middleware('auth');
 
 #cac route cho viec thao tac voi blog
-Route::group(['prefix' => 'event'], function(){
+Route::group(['prefix' => 'event', 'middleware' => 'auth'], function(){
 	Route::get('tao-event', ['as' => 'tao-event', 'uses' => 'EventController@getAdd']);
 	Route::post('xl-event', ['as' => 'xl-event', 'uses' => 'EventController@postAdd']);
 	Route::get('su-kien-cua-toi', ['as' => 'my-events', 'uses' => 'EventController@myEvents']);
 });
-Route::group(['prefix' => 'massage'], function(){
+Route::group(['prefix' => 'massage', 'middleware' => 'auth'], function(){
 	Route::get('chat-box', ['as' => 'chat-box', 'uses' => 'MassageController@chatRoom']);
 	Route::post('send-massage', ['as' => 'sendMassage', 'uses' => 'MassageController@sendMassage']);
 	Route::get('load-massage/{user_id}', ['as' => 'loadMassage','uses' => 'MassageController@loadMassage']);
 });
 
 
+//->middleware('auth');

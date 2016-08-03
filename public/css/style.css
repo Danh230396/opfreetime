@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src: url('../fonts/OpenSans-Regular.ttf');
+}
+@font-face {
+  font-family: 'OpenSans-Bold';
+  src: url('../fonts/OpenSans-Bold.ttf');
+}
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: url('../fonts/OpenSans-Light.ttf');
+}
+@font-face {
+  font-family: 'OpenSans-Semibold';
+  src: url('../fonts/OpenSans-Semibold.ttf');
+}
+body {
+  font-family: OpenSans-Regular !important;
+  color: #252525;
+  background-color: #FAFAFA;
+}
 .clr{
 	clear: both;
 }
@@ -8,7 +29,19 @@ li{
 	list-style: none;
 }
 /*---------------------------------------------------------Phan thong tin cua nguoi dung duoc hien thi ben goc trai */
-
+/*------------------------------------------------------=-Thanh menu ----------*/
+.menu_wrapper{
+	border-bottom: 2px solid #399AFD;
+}
+.solugan{
+	font-size: 12px;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 14px;
+}
+.solugan span{
+	color: #399afd;
+}
 
 
 /*------------------------------------------------------*/
@@ -159,15 +192,7 @@ ul.notify_class li img{
 /*-----------------------------------------------------Trang login ---------------*/
 #login_page{
 }
-#login_page .welcome_opfreetime .solugan{
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	font-size: 14px;
-}
-#login_page .welcome_opfreetime .solugan span{
-	color: #399afd;
-}
+
 #login_page .welcome_opfreetime{
 	text-align: center;
 }
@@ -182,8 +207,132 @@ ul.notify_class li img{
 	box-shadow: none;
 }
 #login_page .form_login .button_login{
-	text-align: center;
+	display: block;
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px 7px;
+    font-size: 15px;
+    border: 1px solid #428bca;
+    background-color: #428bca;
+    color: #fff;
 }
 #login_page .form_login .checkbox{
 	text-align: center;
 }
+/*-----------------------------------------------------Trang register ----------------*/
+#register_page{
+}
+#register_page .welcome_opfreetime .solugan{
+	font-size: 12px;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+#register_page .welcome_opfreetime{
+	text-align: center;
+}
+#register_page .welcome_opfreetime img{
+	width: 200px;
+}
+
+#register_page .form_login .form-control{
+	border-radius: 0px;
+}
+#register_page .form_login .form-control:focus{
+	box-shadow: none;
+}
+#register_page .form_login .button_register{
+	display: block;
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px 7px;
+    font-size: 15px;
+    border: 1px solid #5cb85c;;
+    background-color: #5cb85c;;
+    color: #fff;
+}
+#register_page .form_login .checkbox{
+	text-align: center;
+}
+
+/*-----------------------------------------------------------Thong tin co ban ------*/
+.information{
+	background-color: #ffffff;
+	width: 100%;
+	text-align: center;
+	padding-top: 20px;
+	border-radius: 2px;
+	border: 1px solid #DAD9D9; 
+}
+.information ul .avatar{
+	border: 1px solid #DAD9D9; 
+	border-radius: 50%;
+	padding: 5px;
+}
+
+.information ul .info{
+	padding-top:15px; 
+}
+.information ul .info .name_info{
+	padding: 5px 5px;
+	border-radius: 2px;
+	display: block;
+	font-weight: bold;
+	color: #399afd;
+}
+
+/*---------------------------------------------------------------Trang chu ------------*/
+#home .welcome_wrapper{
+	padding: 35px 0 20px 0;
+	margin: auto;
+	width: 100%;
+	border-radius: 2px;
+	border: 1px solid #DAD9D9; 
+	background-color: #ffffff;
+	text-align: center;
+	margin-bottom: 30px;
+}
+#home .welcome_wrapper img{
+	width: 200px;
+}
+#home .guild_wrapper{
+	padding: 25px 0 20px 0;
+	margin: auto;
+	width: 100%;
+	border-radius: 2px;
+	border: 1px solid #DAD9D9; 
+	background-color: #ffffff;
+	
+}
+#home .guild_wrapper .ten{
+	font-size: 20px;
+	padding-left: 35px;
+}
+#home .guild_wrapper p{
+	width: 100%;
+	padding: 14px;
+	text-align: center;
+	color: #bd8f01;
+}
+#home .guild_wrapper ul{
+	padding-left: 35px;
+	padding-right: 35px;
+}
+#home .guild_wrapper ul li{
+	margin: 10px 0px; 
+	display: block;
+	padding: 10px 0px 10px 0px;
+}
+
+#home .guild_wrapper ul li a{
+	float: right;
+	width: 20%;
+	text-align: right;
+}
+#home .guild_wrapper ul li div{
+	width: 80%;
+	float: left;
+	font-size: 13px;
+}
+

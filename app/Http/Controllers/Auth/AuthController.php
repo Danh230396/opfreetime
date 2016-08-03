@@ -30,15 +30,20 @@ class AuthController extends Controller
         $user->birthday = $request->birthday;
         $user->password = hash::make($request->password);
         $user->remember_token = $request->_token;
-        $user->city_id = 1;
-        $user->district_id = 1;
+        $user->city_id = 1000;
+        $user->district_id = 1000;
         $user->save();
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
         return redirect('/');
     }
 
     function getLogin(){
-        return view('auth.login');
+        if(!Auth::guest()){
+            return redirect('/');
+        }else{
+            return view('auth.login');
+        }
+        
     }
 
     public function postLogin(Request $request){
