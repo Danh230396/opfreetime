@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ url('public/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('public/fontawesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('public/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url('public/css/sticky.css') }}">
+    <link  href="http://fonts.googleapis.com/css?family=Dancing+Script:regular" rel="stylesheet" type="text/css"> 
     <script src="{{ url('public/js/jquery.min.js') }}"></script>
     <script src="{{ url('public/js/bootstrap.min.js') }}"></script>
     <script src="{{ url('public/js/myscript.js') }}"></script>

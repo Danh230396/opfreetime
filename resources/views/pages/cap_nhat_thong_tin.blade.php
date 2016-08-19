@@ -9,6 +9,7 @@
 <div class="container">
    <div class="row">
       @include('blocks.thong_tin_hien_thi')
+       <input type="hidden" value="capnhat" name="ten_trang">
       <div class="col-md-8">
          <h2>Thong tin nguoi dung</h2>
          <hr />

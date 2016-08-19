@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
        @include('blocks.thong_tin_hien_thi')
+       <input type="hidden" value="taosukien" name="ten_trang">
         <div class="col-md-6">
           <form class="form-horizontal" role="form" method="post" action="{{ route('xl-event') }}"  enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

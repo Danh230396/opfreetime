@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+
+  var ten_trang = $('input[name="ten_trang"]').val();
 	
 	$('.type_hobby_sel').on('change', function() {
 			var i = $(".type_hobby_sel").index(this) + 1;
@@ -34,8 +36,9 @@ $(document).ready(function(){
 		     });
 		  });
 
+      if(ten_trang == 'capnhat'){
 
-		var id = $( ".sle_city" ).val();
+         var id = $( ".sle_city" ).val();
 		    $.ajax({
 		        url: "/opfreetime/districtOfCity/" + id,
 		        type: 'get',
@@ -49,6 +52,7 @@ $(document).ready(function(){
 		        },
 
 		    });
+      }
                         
 
 
@@ -111,7 +115,7 @@ $(document).ready(function(){
             });
 
         //Ham load masages le chat box
-        var ten_trang = $('input[name="ten_trang"]').val();
+        
         if(ten_trang == 'chat'){
           setInterval(function(){
           var chat_user_id = $('input[name="chat_user_id"]').val();
@@ -148,6 +152,52 @@ $(document).ready(function(){
         }); }, 1000);
         }
 
+        if(ten_trang == 'banbe'){
+          $('.button_search').click(function(){
+            var key = $('input[name="search_friend"]').val();
+            $.ajax({
+              url: '/opfreetime/user/searchFriend/' + key,
+              type: 'GET',
+              dataType: 'json',
+              success: function(result){
+                  var html = '';
+                  $.each(result, function(key, item){
+                    if(item != null){
+                      html += '<li>';
+                      html += '<div class="row">';
+                      html += '<div class="col-md-11 col-sm-11 col-xs-11">';
+                      html += '<div class="col-md-2 col-sm-2 col-xs-3">';
+                      if(item.image != ''){
+                        html += '<img src="resources/upload/images/users/' +item.image+'" alt="' + item.fullname + '">';
+                      }else{
+                        html += '<img src="images/temp_avatar.jpg" alt="' + item.fullname + '">';
+                      }
+                      html += '</div>';
+                      html += '<div class="col-md-10 col-sm-10 col-xs-9">'
+                      html += '<a href=""><span>' + item.fullname+'</span></a><br />';
+                      html += '<i>' + item.birthday + ' -- ' + item.gender + '</i><br />';
+                      html += '<i>' + item.email + '</i><br />';
+                      html += '<p>' + item.intro + '</p>';
+                      html += '</div>';
+                      html += '</div>';
+                      html += '<div class="col-md-1 col-sm-1 col-xs-1 selection">';
+                      html += '<span><i class="fa fa-exchange" aria-hidden="true"></i></span>';
+                      html += '</div>';
+                      html += '</div>';
+                      html += '</li>';
+                    }
+                  });
+                  $(".list_banbe").html(html);
+                  
+              },
+              error: function(){
+                console.log('that bai');
+              }
+            });
+            console.log('Da click');
+          });
+        }
+
         
 
        
@@ -176,10 +226,5 @@ $(document).ready(function(){
 	// 	console.log(1);
 	// });
 
-
-var friend_id = 8; 
-        $(".li_friend").on('click',function(){
-        	alert('Da click');
-        });
 });
             

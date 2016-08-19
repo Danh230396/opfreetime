@@ -37,6 +37,9 @@ Route::group(['prefix' => 'user'], function () {
 	Route::get('addFriend/{id}', ['as' => 'requestAddFriend', 'uses' => 'UserController@addFriend'])->middleware('auth');
 	#Confirm friend
 	Route::get('confirmFriend/{id}', ['as' => 'confirmFriend', 'uses' => 'UserController@confirmFriend'])->middleware('auth');
+	#search friend se cung cap cac friend cua nguoi do
+	Route::get('searchFriend/{key}', ['as' => 'searchFriend', 'uses' => 'UserController@searchFriend']);
+
 });
 
 #cac route cho hobby

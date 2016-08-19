@@ -33,7 +33,6 @@ class HomeController extends Controller
     {
 
         $users = Friend::where('user_id1', Auth::user()->id)->where('status', 1)->select('user_id2')->get()->toArray();
-        
         $user_list = [];
         foreach($users AS  $item => $value){
             $user_list[] = $value['user_id2'];

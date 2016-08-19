@@ -12,6 +12,7 @@ use Hash;
 use File;
 use App\City;
 use Validator;
+use DB;
 
 class UserController extends Controller
 {
@@ -131,5 +132,18 @@ class UserController extends Controller
         return json_encode($listFriend);
 
     }
+
+    #ham search duoc goi den khi nguoi dung tim kiem mot ai do tren trang cua ho
+    function searchFriend($key){
+        $user_id = Auth::user()->id;
+        $friends = Friend::where('user_id1', '=', $user_id)
+                        ->where('status', '=', 1)->get()->toArray();
+        $listFriend = array();
+        foreach ($friends as  $value) {
+            $listFriend[] = User::where('id', '=', $value['user_id2'])->where('users.fullname', 'LIKE', '%'. $key .'%')->first();
+        }
+        return json_encode($listFriend);
+    }
+    
 
 }
