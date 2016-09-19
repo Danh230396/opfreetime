@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/testHome', function(){ return view('pages.testHome'); });
 
 Route::auth();
+//ban-be:de show ra danh sach ban be của người đăng nhập
 Route::get('/ban-be', 'UserController@listFriend')->middleware('auth');
 Route::get('/danhsachbanbe', 'UserController@getFriend')->middleware('auth');
 

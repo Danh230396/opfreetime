@@ -402,3 +402,26 @@ ul.notify_class li img{
 	margin-left: 6px;
 	color: #84450d;
 }
+#banbe .list_banbe .selection ul{
+	display: block;
+	z-index: 1000;
+	border: 1px solid #999999;
+	border-radius: 2px;
+	padding: 0px;
+	padding-top: 5px;
+	padding-left: 5px;
+	display: none;
+}
+#banbe .list_banbe .selection ul li{
+	padding: 0px;
+	margin: 0px;
+}
+#banbe .list_banbe .selection ul li a{
+	font-size: 12px;
+
+}
+#banbe .list_banbe .selection span:hover #banbe .list_banbe .selection ul{
+	
+		display: block;
+	
+}

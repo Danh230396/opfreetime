@@ -19,9 +19,9 @@ class CreateUsers2Table extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->integer('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->integer('district_id')->unsigned();
-            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
+            $table->foreign('district_id')->references('id')->on('districts');
             $table->string('image', 255);
             $table->text('intro');
             $table->string('education');

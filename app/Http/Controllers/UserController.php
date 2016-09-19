@@ -70,19 +70,31 @@ class UserController extends Controller
 
     function listFriend(){
     	$user_id = Auth::user()->id;
+
+        //thuc hien lay danh sach ban be cua nguoi dung
     	$friends = Friend::where('user_id1', '=', $user_id)
     					->where('status', '=', 1)->get()->toArray();
     	$listFriend = array();
     	foreach ($friends as  $value) {
     		$listFriend[] = User::where('id', '=', $value['user_id2'])->first();
     	}
-    	$requests = Friend::where('user_id2', '=', $user_id)
+
+        //thuc hien lay danh sach cac yeu cau tu nguoi khac gui ve cho nguoi dung
+    	$requires = Friend::where('user_id2', '=', $user_id)
     					->where('status', '=', 0)->get()->toArray();
-    	$listRequest = array();
-    	foreach ($requests as  $value) {
-    		$listRequest[] = User::where('id', '=', $value['user_id1'])->first();
-    	}				
-    	return view('pages.banbe', compact('listFriend', 'listRequest'));
+    	$listRequire = array();
+    	foreach ($requires as  $value) {
+    		$listRequire[] = User::where('id', '=', $value['user_id1'])->first();
+    	}
+
+        //Thuc hien lay danh sach yeu cau ket ban ma nguoi dung da gui cho nguoi khac
+        $requests = Friend::where('user_id1', '=', $user_id)
+                        ->where('status', '=', 0)->get()->toArray();
+        $listRequest = array();
+        foreach ($requests as  $value) {
+            $listRequest[] = User::where('id', '=', $value['user_id1'])->first();
+        }			
+    	return view('pages.banbe', compact('listFriend','listRequire', 'listRequest'));
     }
 
 

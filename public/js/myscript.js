@@ -81,7 +81,12 @@ $(document).ready(function(){
             success: function(result){
                 var html = '<div class="box"><ul>';
                 $.each(result, function(key, item){
-                    html += '<li class="li_friend"><img src="/opfreetime/resources/upload/images/users/' + item.image + '"><span id="span_username">' + item.fullname + '</span><input type="hidden" name="friend_id" value="' + item.id + '"></li>';
+                    if(item.image != ''){
+                      html += '<li class="li_friend"><img src="/opfreetime/resources/upload/images/users/' + item.image + '"><span id="span_username">' + item.fullname + '</span><input type="hidden" name="friend_id" value="' + item.id + '"></li>';
+                    }else{
+                      html += '<li class="li_friend"><img src="/opfreetime/images/temp_avatar.jpg"><span id="span_username">' + item.fullname + '</span><input type="hidden" name="friend_id" value="' + item.id + '"></li>';
+                    }
+                    
                 });
                 html += '</ul></div>'; 
                 $("#box_friend").append(html);

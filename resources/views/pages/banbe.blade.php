@@ -14,13 +14,13 @@
                   </li>
 
                   <li class="friend">
-                    <span><i class="fa fa-users" aria-hidden="true"></i><sup>56</sup> Ban be</span>
+                    <span><i class="fa fa-users" aria-hidden="true"></i><sup>{{ count($listFriend) }}</sup> Ban be</span>
                   </li>
                    <li class="submit">
-                    <span><i class="fa fa-bell" aria-hidden="true"></i><sup>16</sup> Yeu cau</span>
+                    <span><i class="fa fa-bell" aria-hidden="true"></i><sup>{{ count($listRequire) }}</sup> Yeu cau</span>
                   </li>
                   <li class="request">
-                    <span><i class="fa fa-flag" aria-hidden="true"></i><sup>8</sup> De nghi</span>
+                    <span><i class="fa fa-flag" aria-hidden="true"></i><sup>{{ count($listRequest) }}</sup> De nghi</span>
                   </li>
                 </ul>
                 <hr />
@@ -42,7 +42,12 @@
                         </div>
                       </div>
                       <div class="col-md-1 col-sm-1 col-xs-1 selection">
-                         <span><i class="fa fa-exchange" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-exchange" aria-hidden="true"></i></span>
+                            <ul>
+                              <li><a href="#">HTML</a></li>
+                              <li><a href="#">CSS</a></li>
+                              <li><a href="#">JavaScript</a></li>
+                            </ul>
                       </div>
                     </div>
                   </li>
@@ -54,23 +59,23 @@
     </div>
     </div>
     <div class="col-md-9">
-            @if(isset($listRequest))
-             <ul class="list-group result_ul">
-              @foreach($listRequest AS $user)
-              <?php if(empty($user)){ continue; } ?>
-               <li>
-                <img src="@if(isset($user['image'])){{ asset('resources/upload/images/users/'.$user['image']) }} @endif" alt="{{ $user['fullname'] }}">
-                <a href="{{  route('viewUserProfile', $user['id']) }}"><span>{{ $user['fullname'] }}</span></a><br />
-                <i>Sinh Ngay: {{ $user['birthday'] }} -- Gioi tinh: {{ $user['gender'] }}</i><br />
-                <i>Email: {{ $user['email'] }}</i><br />
-                <p>{{ $user['intro'] }} </p>
-                <a href="{{ route('confirmFriend', $user['id']) }}" class="btn btn-info">Xac nhan</a>
-                <div class="clr"></div>
-              </li>
-              @endforeach
-              </ul>
-            @endif
-            <hr />
-        </div>
+      @if(isset($listRequest))
+       <ul class="list-group result_ul">
+        @foreach($listRequest AS $user)
+        <?php if(empty($user)){ continue; } ?>
+         <li>
+          <img src="@if(isset($user['image'])){{ asset('resources/upload/images/users/'.$user['image']) }} @endif" alt="{{ $user['fullname'] }}">
+          <a href="{{  route('viewUserProfile', $user['id']) }}"><span>{{ $user['fullname'] }}</span></a><br />
+          <i>Sinh Ngay: {{ $user['birthday'] }} -- Gioi tinh: {{ $user['gender'] }}</i><br />
+          <i>Email: {{ $user['email'] }}</i><br />
+          <p>{{ $user['intro'] }} </p>
+          <a href="{{ route('confirmFriend', $user['id']) }}" class="btn btn-info">Xac nhan</a>
+          <div class="clr"></div>
+        </li>
+        @endforeach
+        </ul>
+      @endif
+      <hr />
+  </div>
 </div>
 @endsection

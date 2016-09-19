@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
        @include('blocks.thong_tin_hien_thi')
-        <div class="col-md-6">
+        <div class="col-md-6 cot-2">
            <ul class="nav notify_class">
                 @if(isset($notifies))
                 @foreach($notifies AS $notify)
@@ -20,7 +20,7 @@
                 @endif
             </ul>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 cot-3">
             <div id="box_friend">
                 <h4>CHAT ROOM</h4>
                 <hr />
